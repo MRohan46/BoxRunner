@@ -115,14 +115,9 @@ export function DownloadSection() {
                     </ParallaxLayer>
                     
                     {/* Button with parallax and direct link */}
-                    <a 
-                      href={platform.downloadUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="block w-full"
-                    >
                     <ParallaxLayer depth={3}>
                         <Button
+                          asChild
                           size="lg"
                           className="w-full font-bold py-6 text-lg transition-all duration-300 hover:scale-105"
                           style={{
@@ -131,10 +126,15 @@ export function DownloadSection() {
                             boxShadow: `0 0 20px ${platform.color}50`,
                           }}
                         >
-                          {platform.buttonText}
+                          <a
+                            href={platform.downloadUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {platform.buttonText}
+                          </a>
                         </Button>
                     </ParallaxLayer>
-                    </a>
                   </div>
 
                   {/* Corner decorations */}

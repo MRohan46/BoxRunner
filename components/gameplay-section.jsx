@@ -10,22 +10,23 @@ export function GameplaySection() {
     const video = videoRef.current
     if (!video) return
 
-    video.muted = true // Required for autoplay policies
+    video.muted = true
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             video.play().catch((err) => {
               console.log("Playback blocked:", err)
             })
-          } else {
-            video.pause()
+
+            // Stop observing after first trigger
+            obs.unobserve(video)
           }
         })
       },
       {
-        threshold: 0.6, // 60% visible before playing
+        threshold: 0.6,
       }
     )
 
