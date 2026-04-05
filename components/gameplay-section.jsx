@@ -52,7 +52,7 @@ export function GameplaySection() {
             playsInline
           >
             {/* Updated Video URL */}
-            <source src="https://boxrunner.radonarc.xyz/gameplay.mp4" type="video/mp4" />
+            <source src="Gameplay.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 
