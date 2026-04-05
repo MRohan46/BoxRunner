@@ -52,7 +52,7 @@ export function GameplaySection() {
             playsInline
           >
             {/* Updated Video URL */}
-            <source src="Gameplay.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/dtju3tdng/video/upload/f_auto:video/Gameplay_mfc4ib?_s=vp-3.13.1" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 
