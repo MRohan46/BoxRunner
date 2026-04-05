@@ -48,8 +48,8 @@ export function GameplaySection() {
             ref={videoRef}
             className="w-full h-full object-cover"
             poster="/video-poster.jpg"
-            controls
             playsInline
+            autoPlay
           >
             {/* Updated Video URL */}
             <source src="https://res.cloudinary.com/dtju3tdng/video/upload/f_auto:video/Gameplay_mfc4ib?_s=vp-3.13.1" type="video/mp4" />
