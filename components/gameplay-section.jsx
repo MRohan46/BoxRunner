@@ -10,17 +10,36 @@ export function GameplaySection() {
     const video = videoRef.current
     if (!video) return
 
+    video.muted = true // Required for autoplay policies
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch((err) => {
+              console.log("Playback blocked:", err)
+            })
+          } else {
+            video.pause()
+          }
+        })
+      },
+      {
+        threshold: 0.6, // 60% visible before playing
+      }
+    )
+
+    observer.observe(video)
+
     const handleEnded = () => {
       setShowGameOver(true)
     }
 
     const handleKeyDown = (e) => {
       if (e.key === "r" || e.key === "R") {
-        if (video) {
-          video.currentTime = 0
-          video.play()
-          setShowGameOver(false)
-        }
+        video.currentTime = 0
+        video.play()
+        setShowGameOver(false)
       }
     }
 
@@ -28,6 +47,7 @@ export function GameplaySection() {
     window.addEventListener("keydown", handleKeyDown)
 
     return () => {
+      observer.disconnect()
       video.removeEventListener("ended", handleEnded)
       window.removeEventListener("keydown", handleKeyDown)
     }
@@ -47,7 +67,7 @@ export function GameplaySection() {
           <video
             ref={videoRef}
             className="w-full h-full object-cover"
-            poster="/video-poster.jpg"
+            poster="https://i.ibb.co/LzKZhDfv/Capture.png"
             playsInline
             autoPlay
           >
