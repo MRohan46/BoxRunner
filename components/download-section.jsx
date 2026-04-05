@@ -41,6 +41,11 @@ export function DownloadSection() {
           {platforms.map((platform, index) => {
             const IconComponent = platform.icon
             return (
+              <a
+                href={platform.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
               <TiltCard key={index} glowColor={platform.color} className="h-full">
                 <div className="relative p-8 h-full">
                   {/* Background gradient with parallax */}
@@ -126,13 +131,7 @@ export function DownloadSection() {
                             boxShadow: `0 0 20px ${platform.color}50`,
                           }}
                         >
-                          <a
-                            href={platform.downloadUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {platform.buttonText}
-                          </a>
+                          {platform.buttonText}
                         </Button>
                     </ParallaxLayer>
                   </div>
@@ -158,6 +157,7 @@ export function DownloadSection() {
                   </ParallaxLayer>
                 </div>
               </TiltCard>
+              </a>
             )
           })}
         </div>
