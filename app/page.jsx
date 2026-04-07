@@ -6,6 +6,7 @@ import { GameplaySection } from "@/components/gameplay-section"
 import { FeaturesSection } from "@/components/features-section"
 import { PowerUpSection } from "@/components/powerup-section"
 import { DownloadSection } from "@/components/download-section"
+import { DownloadCountSection } from "../components/download-count-section"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -37,6 +38,10 @@ export default function Home() {
     <main ref={sectionsRef} className="min-h-screen bg-[#0D0D12] overflow-x-hidden">
       <HeroSection />
       
+      <div className="fade-section opacity-0 translate-y-8 transition-all duration-700 ease-out">
+        <DownloadCountSection />
+      </div>
+
       <div className="fade-section opacity-0 translate-y-8 transition-all duration-700 ease-out">
         <GameplaySection />
       </div>
